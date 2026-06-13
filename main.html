@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гостевой дом Командор</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Firebase SDK (COMPAT версия для браузера) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__logo-container">
+                <img src="image/logo_0.webp" alt="Логотип" class="header__logo">
+                <p class="header__logo-text">Гостевой дом Командор</p>
+            </div>
+            <nav class="header_nav">
+                <ul class="header__list">
+                    <li><a href="main.html">Главная</a></li>
+                    <li><a href="rooms.html">Номера</a></li>
+                    <li><a href="#!">Кафе</a></li>
+                    <li><a href="https://yandex.ru/maps/org/komandor/68525249608/reviews/?ll=158.648076%2C53.024779&tab=reviews&z=17.07">Отзывы</a></li>
+                    <li><a href="">Контакты</a></li>
+                    <li><a href="cam.html">Камера</a></li>
+                    <li><a href="about us.html">О нас</a></li>                 
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <img   src="image/free-icon-telephone-8016447 1.svg" alt="Телефон" class="icone__phone">
+                <a href="#!" class="phone">+79638300046</a>
+                <a href="#!" class="btn">Забронировать</a>
+                <a  class="po"  href="enter.html">
+                <img src="image/icons8-человек-30 1.svg" alt="аккаунт" class="icone__chel">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="bottom__header-line"></div>
+
+    <section class="hero">
+        <div class="hero__bg">
+            <img src="image/Image.png" alt="">
+        </div>
+        <div class="hero-content">
+            <h1>Вам у нас понравится</h1>
+            <p>«Командор» расположен в самом центре Петропавловска-Камчатского. Часть  номеров с видом на Авачинскую бухту. К услугам гостей общий лаундж, а  также номера с собственной ванной комнатой и LED телевизором с цифровыми каналами. К услугам гостей бесплатный Wi-Fi и парковка на территории.</p>
+        </div>
+    </section>
+
+    <!-- ВИДЖЕТ БРОНИРОВАНИЯ (через отдельный файл) -->
+    <section class="bookonline">
+        <div class="container">
+            <div id="WidgetHorizontalBlockId" class="widget-placeholder"></div>
+        </div>
+    </section>
+
+
+
+    <div class="bottom__header-line"></div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-item">
+                <p class="footer-text"><span class="footer-title">Мы в социальных сетях</span></p>
+            </div>
+            <div class="footer-item">
+                <p class="footer-text"><span class="footer-title">Мы находимся:</span> 683000, Камчатский Край, г. Петропавловск-Камчатский, ул. Советская 74</p>
+            </div>
+            <div class="footer-item">
+                <p class="footer-text"><span class="footer-title">Пишите нам:</span> komandorhotel@mail.ru</p>
+            </div>
+            <div class="footer-item">
+                <p class="footer-text"><span class="footer-title">Звоните нам:</span> +79638300046</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+
+    <!-- ИНИЦИАЛИЗАЦИЯ FIREBASE -->
+    <script>
+        // Конфигурация Firebase (скопирована из консоли)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAeOuZXH7LguR_ExIjGafDcTwgaEU4OJ4A",
+            authDomain: "hotel-600f9.firebaseapp.com",
+            projectId: "hotel-600f9",
+            storageBucket: "hotel-600f9.firebasestorage.app",
+            messagingSenderId: "811243923656",
+            appId: "1:811243923656:web:27aa499db5961c06535dfd",
+            measurementId: "G-TC2NM0F3L8"
+        };
+
+        // Инициализация Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth(); // ← Ключевая строка!
+
+        // Форма регистрации
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            auth.createUserWithEmailAndPassword(email, password)
+            
+                .then((userCredential) => {
+                    alert('Регистрация успешна!');
+                })
+                .catch((error) => {
+                    alert('Ошибка: ' + error.message);
+                });
+        });
+
+        // Форма входа
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                    alert('Успешный вход!');
+                    window.location.href = 'profile.html';
+                })
+                .catch((error) => {
+                    alert('Ошибка: ' + error.message);
+                });
+        });
+    </script>
+
+    <!-- ВИДЖЕТ БРОНИРОВАНИЯ (через отдельный файл) -->
+    
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номера</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <header class="header">
+        <div class="container">
+            <div class="header__logo-container">
+                <img src="image/logo_0.webp" alt="Логотип" class="header__logo">
+                <p class="header__logo-text">Гостевой дом Командор</p>
+            </div>
+            <nav class="header_nav">
+                <ul class="header__list">
+                    <li><a href="main.html">Главная</a></li>
+                    <li><a href="rooms.html">Номера</a></li>
+                    <li><a href="#!">Кафе</a></li>
+                    <li><a href="https://yandex.ru/maps/org/komandor/68525249608/reviews/?ll=158.648076%2C53.024779&tab=reviews&z=17.07">Отзывы</a></li>
+                    <li><a href="#!">Контакты</a></li>
+                    <li><a href="cam.html">Камера</a></li>
+                    <li><a href="about us.html">О нас</a></li>                 
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <img   src="image/free-icon-telephone-8016447 1.svg" alt="Телефон" class="icone__phone">
+                <a href="#!" class="phone">+79638300046</a>
+                <a href="#!" class="btn">Забронировать</a>
+                <a  class="po"  href="enter.html">
+                <img src="image/icons8-человек-30 1.svg" alt="аккаунт" class="icone__chel">
+                </a>
+            </div>
+        </div>
+    </header>
+     <div class="bottom__header-line"></div>
+
+    <section class="rooms-section">
+  <div class="container">
+    <div class="room-card">
+      
+      <div class="room-image">
+        <div class="card-slider">
+          <div class="slider-container">
+            <img src="image/1b5.webp" alt="Номер с видом на бухту">
+            <img src="image/1b7.webp" alt="Номер с видом на бухту">
+            <img src="image/1b6.webp" alt="Номер с видом на бухту">
+            <img src="image/1b8.webp" alt="Номер с видом на бухту">
+          </div>
+          <button class="slider-btn prev">❮</button>
+          <button class="slider-btn next">❯</button>
+        </div>
+      </div>
+      
+      <div class="room-content">
+        <h2 class="room-title">Номер с видом на бухту</h2>
+        <div class="room-price">4969Р/Сут.</div>
+        
+        <p class="room-description">
+          Комфортабельный номер с изумительным видом на Авачинскую бухту. Номер оборудован мини холодильником, ЖК-телевизором, сейфом, феном. Для Вашего комфорта бесплатно предоставляются одноразовые санитарно-гигиенические принадлежности, тапочки, полотенца и две бутылки питьевой воды каждый день. Есть бесплатная чайная зона, включающая индивидуальный чайник, чашки, приборы, чай, кофе, сахар. Санузлы каждого номера оборудованы душевой зоной, раковиной, унитазом. В стоимость проживания включён завтрак.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="rooms-section ">
+  <div class="container">
+    <div class="room-card-second">
+      
+      <div class="room-image">
+        <div class="card-slider">
+          <div class="slider-container">
+            <img src="image/1u1.webp" alt="Номер с видом на бухту">
+            <img src="image/1u2.webp" alt="Номер с видом на бухту">
+            <img src="image/1u3.webp" alt="Номер с видом на бухту">
+          </div>
+          <button class="slider-btn prev">❮</button>
+          <button class="slider-btn next">❯</button>
+        </div>
+      </div>
+      
+      <div class="room-content">
+        <h2 class="room-title">Номер «Стандарт улучшенный с видом на бухту»</h2>
+        <div class="room-price">5799Р/Сут.</div>
+        
+        <p class="room-description">
+Комфортабельный номер с прекрасным видом на Авачинскую бухту. Номер оборудован мини холодильником, ЖК-телевизором, сейфом, диваном, феном, письменным столом бесплатно предоставляются одноразовые санитарно-гигиенические принадлежности, тапочки, полотенца, халат и две бутылки питьевой воды каждый день. Есть бесплатная чайная зона, включающая индивидуальный чайник, чашки, приборы, чай, кофе, сахар. Имеется гладильная зона. Санузлы каждого номера оборудованы душевой зоной, раковиной, унитазом. В стоимость проживания включён завтрак. На всей территории отеля действует бесплатный Wi-Fi.        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Находим все слайдеры внутри карточек
+    const sliders = document.querySelectorAll('.room-image .card-slider');
+    
+    sliders.forEach(slider => {
+      const sliderContainer = slider.querySelector('.slider-container');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let currentIndex = 0;
+      
+      // Функция переключения слайда
+      const goToSlide = (index) => {
+        const slideWidth = sliderContainer.clientWidth;
+        sliderContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+        currentIndex = index;
+      };
+      
+      // Обработчики кнопок
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        }
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < sliderContainer.children.length - 1) {
+          goToSlide(currentIndex + 1);
+        }
+      });
+      
+      // Адаптивность для мобильных (свайпы)
+      let touchStartX = 0;
+      
+      sliderContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+      
+      sliderContainer.addEventListener('touchmove', (e) => {
+        if (touchStartX === 0) return;
+        
+        const touchEndX = e.touches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        
+        if (diff > 50) {
+          // Свайп вправо
+          if (currentIndex < sliderContainer.children.length - 1) {
+            goToSlide(currentIndex + 1);
+          }
+        } else if (diff < -50) {
+          // Свайп влево
+          if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+          }
+        }
+        
+        touchStartX = 0;
+      });
+    });
+  });
+</script>
+</body>
+</html>
